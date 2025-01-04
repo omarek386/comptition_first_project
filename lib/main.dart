@@ -1,11 +1,20 @@
-import 'package:flutter/cupertino.dart';
+import 'package:comptition_first_project/Helper/Database/cache_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'Routers/app_router.dart';
 import 'Routers/routes.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  await CacheHelper.init();
+
   runApp(MyApp(
     appRouter: AppRouter(),
   ));
@@ -26,13 +35,13 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           locale: const Locale('ar'),
           supportedLocales: [
-            const Locale('en'),
+            // const Locale('en'),
             const Locale('ar'),
           ],
           localizationsDelegates: [
-            DefaultMaterialLocalizations.delegate,
-            DefaultCupertinoLocalizations.delegate,
-            DefaultWidgetsLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
           ],
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
