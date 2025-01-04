@@ -10,6 +10,8 @@ class ScreenSize {
   }
 }
 
+String? selectedCountry;
+
 const kPrimaryColor = Color(0xFFFEF3E2);
 const kPrimaryColor2 = Color(0xFFBEC6A0);
 const kPrimaryColor3 = Color(0xFF708871);

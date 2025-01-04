@@ -1,3 +1,4 @@
+import 'package:comptition_first_project/constants/given.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,15 +38,19 @@ class _MyDropDownListState extends State<MyDropDownList> {
         isExpanded: true,
         underline: Container(),
         dropdownColor: widget.dropdownColor,
-        style: TextStyle(color: widget.textColor),
-        value: widget.values.first,
+        style: TextStyle(
+            color: widget.textColor, fontFamily: kfontStyle1, fontSize: 20.sp),
+        value: selectedCountry,
         items: widget.values.map((e) {
           return DropdownMenuItem(
             value: e,
             child: Text(e),
           );
         }).toList(),
-        onChanged: (e) {},
+        onChanged: (e) {
+          selectedCountry = e.toString();
+          setState(() {});
+        },
       ),
     );
   }

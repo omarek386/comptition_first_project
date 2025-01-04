@@ -1,4 +1,6 @@
+import 'package:comptition_first_project/Helper/Database/cache_helper.dart';
 import 'package:comptition_first_project/Routers/routes.dart';
+import 'package:comptition_first_project/constants/keys.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -9,11 +11,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  String? name;
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, Routes.onBoardingScreen);
+    Future.delayed(const Duration(seconds: 3), () async {
+      name = await CacheHelper.getData(key: nameKey);
+      Navigator.pushReplacementNamed(
+          context, name == null ? Routes.registerScreen : Routes.homeScreen);
     });
   }
 

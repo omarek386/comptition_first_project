@@ -1,4 +1,7 @@
+import 'package:comptition_first_project/presentation/Widgets/table.dart';
 import 'package:flutter/material.dart';
+
+import '../../Helper/Database/database_helper.dart';
 
 // ignore: must_be_immutable
 class MyCustomDismissible extends StatefulWidget {
@@ -21,15 +24,16 @@ class _MyCustomDismissibleState extends State<MyCustomDismissible> {
             color: Colors.green,
           ),
           key: Key(widget.items[index].toString()),
-          onDismissed: (DismissDirection direction) {
+          onDismissed: (DismissDirection direction) async {
+            await DatabaseHelper.instance.deleteNote(widget.items[index]);
             setState(() {
               widget.items.removeAt(index);
             });
           },
-          child: ListTile(
-            title: Text(
-              'Item ${widget.items[index]}',
-            ),
+          child: MyCustomTable(
+            installments: widget.items[index].monthlyInstallment,
+            deadTime: widget.items[index].deadTime,
+            notes: widget.items[index].note,
           ),
         );
       },
