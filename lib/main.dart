@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           ),
           // home: const HomeScreen(),
           onGenerateRoute: appRouter.onGenerateRoute,
-          initialRoute: Routes.homeScreen,
+          initialRoute: Routes.splashScreen,
         );
       },
     );
