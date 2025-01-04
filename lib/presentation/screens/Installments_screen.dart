@@ -51,22 +51,20 @@ class _InstallmentsScreenState extends State<InstallmentsScreen> {
       backgroundColor: kPrimaryColor,
       body: Padding(
         padding: EdgeInsets.only(top: 20.h),
-        child: SingleChildScrollView(
-          child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const MyBotWidget(
-                    text:
-                        'في هذة الصفحة يتم عرض او اضافه او حذف الاقساط الملتزم بها حاليا'),
-                verticalSpace(20),
-                widget.installments.isEmpty
-                    ? const NotHaveInstallmentWidget()
-                    : Expanded(
-                        child: DataOfTableWidget(
-                            installments: widget.installments)),
-              ]),
-        ),
+        child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const MyBotWidget(
+                  text:
+                      'في هذة الصفحة يتم عرض او اضافه او حذف الاقساط الملتزم بها حاليا'),
+              verticalSpace(20),
+              widget.installments.isEmpty
+                  ? const NotHaveInstallmentWidget()
+                  : Expanded(
+                      child:
+                          DataOfTableWidget(installments: widget.installments)),
+            ]),
       ),
     );
   }
